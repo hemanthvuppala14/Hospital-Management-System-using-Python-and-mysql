@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{% block title %}{% endblock title %}</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/favicon.png" rel="icon">
+  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+      <div class="align-items-center d-none d-md-flex">
+        <i class="bi bi-clock"></i> 24*7 Available
+      </div>
+      <div class="d-flex align-items-center">
+        <i class="bi bi-phone"></i> Call us now +917032033635
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <a href="/" class="logo me-auto"><img src="static/assets/img/pt-2-logo.png" alt=""></a>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="/">Home</a></li>
+
+          <li><a class="nav-link scrollto" href="/pdetails">Patients Details</a></li>
+          <li><a class="nav-link scrollto" href="/slotbooking">Available Beds</a></li>
+          <li><a class="nav-link scrollto" href="/trigers">Operations</a></li>
+
+{% if current_user.is_authenticated  and current_user.hcode %}
+
+          <li class="dropdown"><a href="/login"><span>Welcome {{current_user.email}}</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+
+              <li><a href="/addhospitalinfo">Add Hospital Data</a></li>
+              <li><a href="/logout">Logout</a></li>
+      
+           
+            </ul>
+          </li>
+{% elif current_user.is_authenticated and current_user.srfid %}
+           <li class="dropdown"><a href="/login"><span>Welcome {{current_user.email}}</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+
+              <li><a href="/slotbooking">Book Slot</a></li>
+              <li><a href="/logout">Logout</a></li>
+      
+           
+            </ul>
+          </li>
+{% else %}
+          <li class="dropdown"><a href="/login"><span>Sign In</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/login">User Login</a></li>
+              <li><a href="/hospitallogin">Hospital Login</a></li>
+              <li><a href="/admin">Admin Login</a></li>
+           
+            </ul>
+          </li>
+
+{% endif %}
+          <li><a class="nav-link scrollto" href="/contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="/slotbooking" class="appointment-btn scrollto"><span class="d-none d-md-inline">Appointment Booking slot </span> Book Now</a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url(static/assets/img/slide/slide-1.jpg)">
+          <div class="container">
+            <h2>Welcome to <span>MEDICO Hospital data management system</span></h2>
+            <p>Healthcare system in your hands<p>
+            <a href="#services" class="btn-get-started scrollto">Read More</a>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url(static/assets/img/slide/slide-2.jpg)">
+          <div class="container">
+            <h2>About Us</h2>
+            <p></p>
+            <a href="#about" class="btn-get-started scrollto">Read More</a>
+          </div>
+        </div>
+        
+       
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+  </section><!-- End Hero -->
+  <!-- ======= Cta Section ======= -->
+  <section id="cta" class="cta">
+    <div class="container" data-aos="zoom-in">
+
+      <div class="text-center">
+        <h3>"In a medical crisis?</h3>
+        <p>Reach out for immediate assistance, schedule an appointment, or seek guidance through our expedited care channels."</p>
+        <a class="cta-btn scrollto" href="#appointment">Make an Make an Appointment</a>
+      </div>
+
+    </div>
+  </section><!-- End Cta Section -->
+   <!-- ======= About Us Section ======= -->
+   <section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>About Us</h2>
+        <p> Welcome to Our Hospital Data Management System</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6" data-aos="fade-right">
+          <img src="static/assets/img/about.jpg" class="img-fluid" alt="">
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
+          <h3>At HDMS, we are dedicated to providing the highest quality healthcare services to our patients. Our Hospital Data Management System, powered by Flask and MySQL, is designed to streamline and enhance the efficiency of our operations, ultimately leading to better patient care and outcomes.
+          </h3>
+          <p class="fst-italic">
+            Our mission is to leverage technology to revolutionize healthcare delivery. By integrating innovative solutions like Flask and MySQL into our hospital management system, we aim to:
+            
+          </p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i>Improve patient care by ensuring accurate and timely access to medical records.</li>
+            <li><i class="bi bi-check-circle"></i>Enhance operational efficiency through automated processes and data-driven insights.</li>
+            <li><i class="bi bi-check-circle"></i>Empower healthcare professionals with tools that enable them to make informed decisions and deliver personalized care.</li>
+            <li><i class="bi bi-check-circle"></i>Foster collaboration and communication among healthcare teams, leading to better coordination of care.</li>
+          </ul>
+          <p>Why Choose Our Hospital Data Management System?
+            User-Friendly Interface: Our system features an intuitive interface that is easy to navigate, ensuring seamless adoption by healthcare professionals.
+            Robust Security: We understand the importance of patient confidentiality and data security. Our system is equipped with robust security measures to safeguard sensitive medical information.
+            Scalability: Whether you're a small clinic or a large hospital network, our system is designed to scale according to your needs, accommodating the growth of your healthcare facility.
+            Customization: We recognize that every healthcare facility is unique. That's why our system offers customization options, allowing you to tailor it to fit your specific requirements.
+            24/7 Support: Our dedicated support team is available round the clock to assist you with any technical issues or queries you may have, ensuring uninterrupted access to our system.
+            Meet Our Team
+            Behind our Hospital Data Management System is a team of dedicated professionals with a passion for healthcare and technology. From software developers and data analysts to healthcare administrators and clinicians, each member of our team brings expertise and experience to the table, working collaboratively to deliver a solution that meets the needs of our healthcare community.
+            Get in Touch
+            Thank you for choosing HDMS and our Hospital Data Management System. If you have any questions, feedback, or would like to schedule a demo, please don't hesitate to contact us. We look forward to serving you and partnering with you on your journey towards better healthcare delivery.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Us Section -->
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>Here are our various services provided for the better service for patients.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon"><i class="fas fa-heartbeat"></i></div>
+            <h4 class="title"><a href="">emergency</a></h4>
+            <p class="description">Our emergency care service provides immediate medical 
+              attention to patients 
+              experiencing acute illness or injury, ensuring timely assessment, 
+              stabilization, and treatment.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon"><i class="fas fa-pills"></i></div>
+            <h4 class="title"><a href="">Surgical Services</a></h4>
+            <p class="description">With state-of-the-art operating rooms and skilled surgical teams, we offer a wide range of surgical procedures, from routine surgeries to complex interventions, delivered with precision and care.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon"><i class="fas fa-hospital-user"></i></div>
+            <h4 class="title"><a href="">Diagnostic Imaging</a></h4>
+            <p class="description">Utilizing advanced imaging technology such as MRI, CT scans, X-rays, and ultrasound, our diagnostic imaging service helps physicians accurately diagnose medical conditions and plan appropriate treatment strategies.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon"><i class="fas fa-dna"></i></div>
+            <h4 class="title"><a href="">Maternity and Neonatal Care</a></h4>
+            <p class="description">Our maternity and neonatal care service provides comprehensive prenatal, delivery, and postnatal care for expectant mothers and newborns, ensuring a safe and nurturing environment for the start of life's journey.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon"><i class="fas fa-wheelchair"></i></div>
+            <h4 class="title"><a href="">Chronic Disease Management</a></h4>
+            <p class="description">Through personalized treatment plans and ongoing monitoring, our chronic disease management service helps patients effectively manage conditions such as diabetes, hypertension, and heart disease, improving quality of life and reducing complications.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon"><i class="fas fa-notes-medical"></i></div>
+            <h4 class="title"><a href="">Rehabilitation Services</a></h4>
+            <p class="description">Our rehabilitation services focus on restoring function and mobility for patients recovering from injury, surgery, or illness, offering physical therapy, occupational therapy, and other specialized programs tailored to individual needs.</p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+ <!-- ======= Doctors Section ======= -->
+ <section id="doctors" class="doctors section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Doctors</h2>
+      <p>"Meet our esteemed medical professionals, a dedicated team of experienced doctors committed to delivering compassionate care and expertise. With a wealth of knowledge and a passion for healing, our doctors bring years of specialized training and clinical excellence to every patient interaction. Trust in their expertise as they guide you on your journey to optimal health and well-being."</p>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+        <div class="member" data-aos="fade-up" data-aos-delay="100">
+          <div class="member-img">
+            <img src="static/assets/img/doctors/doctors-1.jpg" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Walter White</h4>
+            <span>Chief Medical Officer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+        <div class="member" data-aos="fade-up" data-aos-delay="200">
+          <div class="member-img">
+            <img src="static/assets/img/doctors/doctors-2.jpg" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Sarah Jhonson</h4>
+            <span>Anesthesiologist</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+        <div class="member" data-aos="fade-up" data-aos-delay="300">
+          <div class="member-img">
+            <img src="static/assets/img/doctors/doctors-3.jpg" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>William Anderson</h4>
+            <span>Cardiology</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+        <div class="member" data-aos="fade-up" data-aos-delay="400">
+          <div class="member-img">
+            <img src="static/assets/img/doctors/doctors-4.jpg" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Amanda Jepson</h4>
+            <span>Neurosurgeon</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section><!-- End Doctors Section -->
+
+      <!-- ======= Appointment Section ======= -->
+      <section id="appointment" class="appointment section-bg">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-title">
+            <h2>Make an Appointment</h2>
+            <p>Need appointment ? why waiting in queue for hours while we are here to 
+               book your appointments by getting your request please enter correct
+               Details for booking appointment
+            </p>
+          </div>
+  
+          <form action="forms/appointment.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-4 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+              <div class="col-md-4 form-group mt-3 mt-md-0">
+                <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 form-group mt-3">
+                <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" required>
+              </div>
+              <div class="col-md-4 form-group mt-3">
+                <select name="department" id="department" class="form-select">
+                  <option value="">Select Department</option>
+                  <option value="Department 1">children specialist</option>
+                  <option value="Department 2">dentist</option>
+                  <option value="Department 3">general care</option>
+                </select>
+              </div>
+              <div class="col-md-4 form-group mt-3">
+                <select name="doctor" id="doctor" class="form-select">
+                  <option value="">Select Doctor</option>
+                  <option value="Doctor 1">Doctor 1</option>
+                  <option value="Doctor 2">Doctor 2</option>
+                  <option value="Doctor 3">Doctor 3</option>
+                </select>
+              </div>
+            </div>
+  
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Make an Appointment</button></div>
+          </form>
+  
+        </div>
+      </section><!-- End Appointment Section -->
+  
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>issues ? please feel free to contact us </p>
+        </div>
+
+      </div>
+
+      <div>
+        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.936389005059!2d80.22024131437107!3d13.029187490839193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266876c0f2c8b%3A0xa3f36238ccf1cf39!2sMarina%20Beach!5e0!3m2!1sen!2sin!4v1645246509487!5m2!1sen!2sin" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div class="container">
+
+        <div class="row mt-5">
+
+          <div class="col-lg-6">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="info-box">
+                  <i class="bx bx-map"></i>
+                  <h3>Our Address</h3>
+                  <p>Navalur, Chennai, India</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box mt-4">
+                  <i class="bx bx-envelope"></i>
+                  <h3>Email Us</h3>
+                  <p>hemanthvuppala14@gmail.com</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box mt-4">
+                  <i class="bx bx-phone-call"></i>
+                  <h3>Call Us</h3>
+                  <p>+91 7032033635<br>+91 7032033635</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col form-group mt-3">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  <main id="main">
+
+  {% block body %}
+  
+  
+  {% endblock body %}
+
+
+
+<footer>
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>V. Hemanth</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+       
+        Designed by <a href="/">V. Hemanth</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/purecounter/purecounter.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+
+</body>
+
+</html>
