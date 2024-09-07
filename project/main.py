@@ -29,7 +29,7 @@ app.config.update(
      MAIL_USE_TLS=False,
      MAIL_USE_SSL=True,
      MAIL_USERNAME='hemanthvuppala14@gmail.com',
-     MAIL_PASSWORD='ntkb dypx lnoo oivb'
+     MAIL_PASSWORD='enter encoded pass'
 )
 mail = Mail(app)
 
